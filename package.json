@@ -1,28 +1,34 @@
 {
-  "name": "weather",
+  "name": "rlweather",
   "version": "1.0.0",
+  "author": "rlgy <rlgyzhcn@gmail.com>",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
-  "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^8.2.1"
   },
   "devDependencies": {
+    "electron": "^8.2.1",
     "electron-builder": "^22.4.1",
     "yarn": "^1.22.4"
   },
   "build": {
-    "appId": "rlgy.weather",
+    "appId": "com.rlgy.rlweather",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
     "linux": {
       "target": [
-        "appImage"
-      ]
+        "AppImage"
+      ],
+      "icon": "build/icons",
+      "category": "Network"
     }
   }
 }
