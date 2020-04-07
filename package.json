@@ -1,0 +1,28 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^8.2.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^22.4.1",
+    "yarn": "^1.22.4"
+  },
+  "build": {
+    "appId": "rlgy.weather",
+    "linux": {
+      "target": [
+        "appImage"
+      ]
+    }
+  }
+}
