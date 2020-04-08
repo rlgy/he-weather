@@ -11,6 +11,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "electron": "^8.2.1",
