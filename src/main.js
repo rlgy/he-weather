@@ -1,4 +1,4 @@
 const app = require('./js/app');
 
 // 运行程序
-app.run();
+(new app()).run();
