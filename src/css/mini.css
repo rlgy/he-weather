@@ -1,0 +1,30 @@
+/*
+mini 程序的css
+ */
+
+#root {
+    width: 450px;
+    height: 300px;
+    background: black;
+    color: white;
+}
+
+#weather-now {
+}
+
+#weather-now #weather-image {
+    width: 20%;
+    padding: 30px;
+}
+
+#weather-now #weather-image img {
+    width: 80px;
+}
+
+#weather-now-detail {
+    width: 60%;
+}
+
+#weather-now-extra {
+    width: 20%;
+}

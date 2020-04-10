@@ -17,7 +17,7 @@ class app {
 
         electron.on('ready', () => {
             let win = new BrowserWindow(this.winParams);
-            win.loadFile('./src/html/index.html');
+            win.loadFile('./src/dist/mini.html');
             win.webContents.openDevTools();
         });
 
@@ -26,10 +26,12 @@ class app {
     //初始化窗口参数
     _initWinParams() {
         return {
+            x: 0,
+            y: 0,
             width: 450,
-            height: 150,
+            height: 300,
             darkTheme: true,
-            // frame: false,
+            frame: false,
             resizable: false,
             webPreferences: {
                 preload: path.join(electron.getAppPath(), 'src/js/preload.js'),
