@@ -1,9 +1,4 @@
-import Vue from 'vue/dist/vue.common';
-import 'bootstrap/dist/css/bootstrap.css';
-import './components/mini';
-import '../css/site.css';
-import '../css/mini.css';
-
+// mini 程序
 
 var get = {
     basic: {
@@ -24,7 +19,7 @@ var get = {
     now: {
         "cloud": "91",
         "cond_code": "101",
-        "cond_txt": "多云",
+        "cond_txt": "大暴雨到特大暴雨",
         "fl": "20",
         "hum": "36",
         "pcpn": "0.0",
@@ -44,12 +39,12 @@ var data = {
         src: "../dist/cloud.png"
     },
     detail: {
-        city: get.basic.location + ', ' + get.basic.admin_area + ', ' + get.basic.cnty,
+        city: get.basic.location + '市，' + get.basic.admin_area + '省，' + get.basic.cnty,
         weather: get.now.cond_txt,
-        temperature: get.now.tmp + 'C',
-        up: 0,
-        down: 0,
-        update: get.update.loc,
+        temperature: get.now.tmp,
+        up: "06:00",
+        down: "18:00",
+        update: "21:29",
     },
     extra: {
         cloudiness: get.now.cloud,
@@ -60,7 +55,7 @@ var data = {
 };
 
 var weather = new Vue({
-    el: "#root",
+    el: "#weather",
     data: {
         data: data
     },

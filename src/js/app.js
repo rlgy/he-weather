@@ -29,7 +29,7 @@ class app {
             x: 0,
             y: 0,
             width: 450,
-            height: 300,
+            height: 370,
             darkTheme: true,
             frame: false,
             resizable: false,

@@ -1,57 +1,61 @@
 // mini 程序的组件
-import Vue from 'vue/dist/vue.common';
-import './base';
 
-Vue.component('weather-now-detail', {
-    props: {
-        detail: Object,
-    },
-    template:
-        "<div id='weather-now-detail' class='col-xs-4'>" +
-        "<p>{{ city }}</p>" +
-        "<p><span>{{ weather }}</span><span>{{ temperature }}</span></p>" +
-        "<p><span>{{ up }}</span><span>{{ down }}</span><span>{{ update }}</span></p>" +
-        "</div>",
-    data: function () {
-        return {
-            city: this.detail.city,
-            weather: this.detail.weather,
-            temperature: this.detail.temperature,
-            up: this.detail.up,
-            down: this.detail.down,
-            update: this.detail.update,
-        }
-    }
-});
-
-Vue.component('weather-now-extra', {
-    props: {
-        extra: Object,
-    },
-    template:
-        "<div id='weather-now-extra' class='col-xs-4'>" +
-        "<p>云量: {{ cloudiness }}</p>" +
-        "<p>湿度: {{ humidity }}</p>" +
-        "<p>气压: {{ air }}</p>" +
-        "<p>风: {{ wind }}</p>" +
-        "</div>",
-    data: function () {
-        return {
-            cloudiness: this.extra.cloudiness,
-            humidity: this.extra.humidity,
-            air: this.extra.air,
-            wind: this.extra.wind,
-        }
-    }
-});
-
-Vue.component('weather-now', {
+Vue.component('weather-mini', {
     props: {
         data: Object,
     },
-    template: "<div id='weather-now' class='row'>" +
-        "<weather-image v-bind:image='data.image'></weather-image>" +
-        "<weather-now-detail v-bind:detail='data.detail'></weather-now-detail>" +
-        "<weather-now-extra v-bind:extra='data.extra'></weather-now-extra>" +
+    template: "<div class='container weather-mini'>" +
+        "<weather-description></weather-description>" +
+        "<location-temperature></location-temperature>" +
+        "<now-and-forecast></now-and-forecast>" +
         "</div>"
+});
+
+// 当天以及预报组件
+Vue.component('now-and-forecast', {
+    template: "<div class='container now-and-forecast'>" +
+        "<div class='row'>" +
+        "<div class='col-3'><weather-daily></weather-daily></div>" +
+        "<div class='col-3'><weather-daily></weather-daily></div>" +
+        "<div class='col-3'><weather-daily></weather-daily></div>" +
+        "<div class='col-3'><weather-daily></weather-daily></div>" +
+        "</div>" +
+        "</div>"
+});
+
+// 简略天气描述组件
+Vue.component('weather-daily', {
+    // props: {
+    //     daily_info: Object,
+    // },
+    template: "<div class='weather-daily'>" +
+        "<div>今天</div>" +
+        "<div><img src='https://cdn.heweather.com/cond_icon/404.png'></div>" +
+        "<div>20&#8451;/9&#8451;</div>" +
+        "</div>",
+});
+
+// 时间日期地区温度组件
+Vue.component('location-temperature', {
+    // props: {
+    //     location: String,
+    //     temperature: String,
+    // },
+    template: "<div class='container location-temperature'>" +
+        "<div class='row'>" +
+        "<div class='col-6'>" +
+        "<div>04月12日 周日</div>" +
+        "<div>杭州市</div>" +
+        "</div>" +
+        "<div class='col-6 temperature'>20 &#8451;</div>" +
+        "</div>" +
+        "</div>"
+});
+
+// 天气描述组件
+Vue.component('weather-description', {
+    template: "<div class='container weather-description'>" +
+        "<div><img src='https://cdn.heweather.com/cond_icon/404.png'></div>" +
+        "<div>阴</div>" +
+        "</div>",
 });
