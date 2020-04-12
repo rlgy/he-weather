@@ -10,9 +10,53 @@ class app {
     }
 
     run() {
-        ipcMain.on('asynchronous-message', (event, args) => {
-            console.log(args);
-            event.reply('asynchronous-reply', 'JLM')
+        ipcMain.on('weather-update', (event, args) => {
+            let data = {
+                description: {
+                    description: "阴",
+                    image: "https://cdn.heweather.com/cond_icon/404.png"
+                },
+                location_temperature: {
+                    location: "余杭区",
+                    temperature: 24,
+                },
+                now_and_forecast: [
+                    {
+                        date: "今天",
+                        image: "https://cdn.heweather.com/cond_icon/404.png",
+                        temperature: {
+                            max: 23,
+                            min: 9
+                        }
+                    },
+                    {
+                        date: "明天",
+                        image: "https://cdn.heweather.com/cond_icon/404.png",
+                        temperature: {
+                            max: 23,
+                            min: 9
+                        }
+                    },
+                    {
+                        date: "04/14",
+                        image: "https://cdn.heweather.com/cond_icon/404.png",
+                        temperature: {
+                            max: 23,
+                            min: 9
+                        }
+                    },
+                    {
+                        date: "04/15",
+                        image: "https://cdn.heweather.com/cond_icon/404.png",
+                        temperature: {
+                            max: 23,
+                            min: 9
+                        }
+                    }
+                ]
+
+            };
+            event.reply('weather-updated', {code: 0, data: data});
         });
 
         electron.on('ready', () => {
