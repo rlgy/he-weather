@@ -70,16 +70,16 @@ class app {
     //初始化窗口参数
     _initWinParams() {
         return {
-            x: 0,
-            y: 0,
+            x: 30,
+            y: 30,
             width: 450,
             height: 370,
-            darkTheme: true,
             frame: false,
             resizable: false,
+            transparent: true,
             webPreferences: {
                 preload: path.join(electron.getAppPath(), 'src/js/preload.js'),
-            }
+            },
         }
     }
 }

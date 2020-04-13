@@ -2,6 +2,9 @@
 // Author: rlgyzhcn
 // Date: 2020/4/12 20:34
 
+
+// 常规天气数据接口
+
 var get = {
     basic: {
         "cid": "CN101210101",
@@ -121,4 +124,21 @@ var get = {
     ]
 };
 
-const URL='https://free-api.heweather.net/s6/weather/forecast?{parameters}';
+const data = require('../../model/data/weather');
+const HeBase = require('./base');
+
+
+const OPERATE_NOW = 'now';
+const OPERATE_FORECAST = 'forecast';
+const PARAMS = {
+    location: "杭州",
+    lang: "zh",
+    unit: "i",
+};
+
+
+var HeNormal = {};
+HeNormal.prototype = new HeBase();
+
+
+module.exports = HeNormal;

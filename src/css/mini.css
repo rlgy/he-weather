@@ -5,8 +5,9 @@ mini 程序的css
 #weather {
     width: 450px;
     height: 370px;
-    background: #182120;
+    background: #CACFD2;
     color: white;
+    border-radius: 10px;
 }
 
 .weather-mini {
