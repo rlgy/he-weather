@@ -11,52 +11,17 @@ class app {
 
     run() {
         ipcMain.on('weather-update', (event, args) => {
-            let data = {
-                description: {
-                    description: "阴",
-                    image: "https://cdn.heweather.com/cond_icon/404.png"
-                },
-                location_temperature: {
-                    location: "余杭区",
-                    temperature: 24,
-                },
-                now_and_forecast: [
-                    {
-                        date: "今天",
-                        image: "https://cdn.heweather.com/cond_icon/404.png",
-                        temperature: {
-                            max: 23,
-                            min: 9
-                        }
-                    },
-                    {
-                        date: "明天",
-                        image: "https://cdn.heweather.com/cond_icon/404.png",
-                        temperature: {
-                            max: 23,
-                            min: 9
-                        }
-                    },
-                    {
-                        date: "04/14",
-                        image: "https://cdn.heweather.com/cond_icon/404.png",
-                        temperature: {
-                            max: 23,
-                            min: 9
-                        }
-                    },
-                    {
-                        date: "04/15",
-                        image: "https://cdn.heweather.com/cond_icon/404.png",
-                        temperature: {
-                            max: 23,
-                            min: 9
-                        }
-                    }
-                ]
-
-            };
-            event.reply('weather-updated', {code: 0, data: data});
+            let controllerId = args.controller.toLowerCase() + 'Controller';
+            let action = 'action' + args.action[0].toUpperCase() + args.action.slice(1).toLowerCase();
+            let requestParams = args.requestParams;
+            const controllerClass = require('./controller/' + controllerId).class;
+            let controller = new controllerClass();
+            controller[action](requestParams).then(function (data) {
+                event.reply('weather-updated', {code: 0, data: data});
+            }, function (error) {
+                // todo log
+                // console.log(error);
+            });
         });
 
         electron.on('ready', () => {
