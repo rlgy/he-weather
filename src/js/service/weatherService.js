@@ -11,7 +11,7 @@ class WeatherService {
     /**
      * 更新天气信息
      */
-    update() {
+    update(requestParams = {}) {
         // 读配置
         const params = {};
         const name = 'he';
@@ -20,13 +20,12 @@ class WeatherService {
 
         const promise = instance.weather(params);
 
-        promise.then(function (data) {
+        return promise.then(function (data) {
             // data数据校验处理
             data = Object.assign({}, respect, data);
-            console.log(data);
-            return {code: 0, data: data};
+
+            return {code: 0, msg: '', data: data};
         });
-        return promise;
     }
 }
 

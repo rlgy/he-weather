@@ -56,6 +56,6 @@
             weather.data = Object.assign({}, weather.data, arg.data);
         }
     });
-    ipcRenderer.send('weather-update', {controller: "weather", action: "index", requestParams: {name: "pong"}});
+    ipcRenderer.send('weather-update', {controller: "weather", action: "index", requestParams: {}});
     window.weather = weather;
 })(window, ipcRenderer);

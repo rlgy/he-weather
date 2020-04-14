@@ -7,6 +7,7 @@ class app {
         Menu.setApplicationMenu(null);
         // 初始化窗口参数
         this.winParams = this._initWinParams();
+        electron.allowRendererProcessReuse = true;
     }
 
     run() {
@@ -16,11 +17,9 @@ class app {
             let requestParams = args.requestParams;
             const controllerClass = require('./controller/' + controllerId).class;
             let controller = new controllerClass();
+
             controller[action](requestParams).then(function (data) {
-                event.reply('weather-updated', {code: 0, data: data});
-            }, function (error) {
-                // todo log
-                // console.log(error);
+                event.reply('weather-updated', data);
             });
         });
 

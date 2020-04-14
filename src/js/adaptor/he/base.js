@@ -3,7 +3,7 @@
 // Date: 2020/4/13 下午4:41
 // 和风天气api 基础对象
 
-const {https} = require('https');
+const https = require('https');
 const querystring = require('querystring');
 const {net} = require('electron');
 
@@ -17,61 +17,32 @@ class HeBase {
 
     _send(url, params) {
         params = Object.assign({}, params, {key: this._app_key});
-        console.log(params);
-
         url += '?' + querystring.stringify(params);
-        console.log(url);
-        // const client = https.request(url, (res) => {
-        //
-        //     console.log(`状态码: ${res.statusCode}`);
-        //     console.log(`响应头: ${JSON.stringify(res.headers)}`);
-        //
-        //
-        //     res.setEncoding('utf8');
-        //     res.on('data', function (chunk) {
-        //         console.log(chunk);
-        //         process.stdout.write(chunk);
-        //         data += chunk;
-        //     });
-        //     res.on('end', function () {
-        //         console.log(data);
-        //         return JSON.parse(data);
-        //     });
-        //     res.on('error', function (error) {
-        //         console.log(error);
-        //     });
-        // });
-        // console.log(client);
-        // client.on('error', function (error) {
-        //     console.log(error);
-        // });
-        //
-        // client.end();
-
         const promise = new Promise(function (resolve, reject) {
 
             let data = '';
-
-            const request = net.request(url);
-            request.on('response', (response) => {
-                response.on('data', (chunk) => {
+            const client = https.request(url, {timeout: 500}, (res) => {
+                res.setEncoding('utf8');
+                res.on('data', function (chunk) {
                     data += chunk;
                 });
-                response.on('end', () => {
+                res.on('end', function () {
                     data = JSON.parse(data).HeWeather6[0];
                     resolve(data);
                 });
-                response.on('error', function (error) {
+                res.on('error', function (error) {
                     reject(error);
-                })
+                });
             });
-            request.end();
+
+            client.on('error', function (error) {
+                reject(error);
+            });
+
+            client.end();
 
         });
-
         return promise;
-
-
     }
 
 }
