@@ -1,0 +1,47 @@
+/*
+mini 程序的css
+ */
+
+#weather {
+    width: 450px;
+    height: 370px;
+    background: #CACFD2;
+    color: white;
+}
+
+.weather-mini {
+    padding-top: 20px;
+}
+
+.weather-mini .weather-description {
+    text-align: center;
+    font-size: 40px;
+}
+
+.weather-mini .weather-description img {
+    width: 100px;
+}
+
+.weather-mini .location-temperature {
+    margin-bottom: 10px;
+    border-bottom: white solid 1px;
+    padding: 15px 0;
+}
+
+.weather-mini .location-temperature p {
+    margin-bottom: 5px;
+}
+
+.weather-mini .location-temperature .temperature {
+    font-size: 55px;
+    text-align: center;
+    line-height: 45px;
+}
+
+.weather-mini .now-and-forecast .weather-daily {
+    text-align: center;
+}
+
+.weather-mini .now-and-forecast .weather-daily img {
+    width: 30px;
+}
