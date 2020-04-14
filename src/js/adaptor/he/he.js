@@ -24,7 +24,7 @@ class He {
         }).then(respect => {
             return dataForecast.then(data => {
                 if ("ok" === data.status) {
-                    for (let i = 0; i < 3; i++) {
+                    for (let i = 0; i < 4; i++) {
                         let date = data.daily_forecast[i].date;
                         if (0 === i) {
                             date = '今天';
