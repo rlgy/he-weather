@@ -26,7 +26,7 @@ class app {
         electron.on('ready', () => {
             let win = new BrowserWindow(this.winParams);
             win.loadFile('./src/dist/mini.html');
-            win.webContents.openDevTools();
+            // win.webContents.openDevTools();
         });
 
     }
